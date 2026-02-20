@@ -1,4 +1,4 @@
-import Character from "./character.js";
+import Character from "../character.js";
 import Scroll from "./scroll.js";
 
 class ScrollOfStrength extends Scroll {

@@ -1,4 +1,4 @@
-import Character from "./character.js";
+import Character from "../character.js";
 import Item from "./item.js";
 
 abstract class Scroll extends Item {

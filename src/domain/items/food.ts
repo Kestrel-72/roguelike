@@ -1,5 +1,5 @@
 import Item from "./item.js";
-import Character from "./character.js";
+import Character from "../character.js";
 
 abstract class Food extends Item {
     #healPercent: number;
