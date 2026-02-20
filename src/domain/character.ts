@@ -35,21 +35,13 @@ class Character {
         this.#maxHealth = this.#maxHealth > amount ? this.#maxHealth - amount : 1;
     }
 
-    // useScroll(scroll: Scroll) {
-    //     scroll.apply(this);
-    // }
+    increaseStrength(amount: number) {
+        this.#strength += amount;
+    }
 
-    // eatFood(food: Food) {
-    //     food.apply(this);
-    // }
-
-    // drinkPotion(potion: Potion) {
-    //     potion.apply(this);
-    // }
-
-    // useItem(item: Item) {
-
-    // }
+    increaseAgility(amount: number) {
+        this.#agility += amount;
+    }
 
 }
 
