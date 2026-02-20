@@ -5,15 +5,15 @@ class Level {
         this.#level_num = 1;
     }
 
-    get level(): number {
+    get level_num(): number {
         return this.#level_num;
     }
 
-    set level(value: number) {
+    set level_num(value: number) {
         this.#level_num = value;
     }
 
-    increaseLevel(): void {
+    increaseLevelNum(): void {
         this.#level_num++;
     }
 }
