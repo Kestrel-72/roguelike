@@ -2,19 +2,19 @@ import Character from "../character.js";
 import Scroll from "./scroll.js";
 
 class ScrollOfHealth extends Scroll {
-    #amount: number;
+    #maxHealthBoost: number;
 
     constructor() {
         super("Scroll of Health");
-        this.#amount = 10;
+        this.#maxHealthBoost = 10;
     }
 
-    get amount(): number {
-        return this.#amount;
+    get maxHealthBoost(): number {
+        return this.#maxHealthBoost;
     }
 
     use(character: Character): void {
-        character.increaseMaxHealth(this.#amount);
+        character.increaseMaxHealth(this.#maxHealthBoost);
     }
 }
 

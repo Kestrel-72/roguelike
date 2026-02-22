@@ -2,19 +2,19 @@ import Character from "../character.js";
 import Scroll from "./scroll.js";
 
 class ScrollOfAgility extends Scroll {
-    #amount: number;
+    #agilityBoost: number;
 
     constructor() {
         super("Scroll of Agility");
-        this.#amount = 1;
+        this.#agilityBoost = 1;
     }
 
-    get amount(): number {
-        return this.#amount;
+    get agilityBoost(): number {
+        return this.#agilityBoost;
     }
 
     use(character: Character): void {
-        character.increaseAgility(this.#amount);
+        character.increaseAgility(this.#agilityBoost);
     }
 }
 
