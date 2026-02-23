@@ -5,7 +5,7 @@ class ScrollOfStrength extends Scroll {
     #strengthBoost: number;
 
     constructor() {
-        super("Scroll of Strength");
+        super(13, "Scroll of Strength");
         this.#strengthBoost = 1;
     }
 

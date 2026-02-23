@@ -2,8 +2,8 @@ import Character from "../character.js";
 import Item from "./item.js";
 
 abstract class Scroll extends Item {
-    constructor(name: string) {
-        super(name);
+    constructor(id: number, name: string) {
+        super(id, name, 9);
     }
 
     abstract use(character: Character): void;

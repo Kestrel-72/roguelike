@@ -2,7 +2,7 @@ import Food from "./food.js";
 
 class Sandwich extends Food {
     constructor() {
-        super("Sandwich", 20);
+        super(1, "Sandwich", 20);
     }
 }
 

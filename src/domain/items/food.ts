@@ -4,8 +4,8 @@ import Character from "../character.js";
 abstract class Food extends Item {
     #healPercent: number;
 
-    constructor(name: string, healPercent: number) {
-        super(name);
+    constructor(id: number, name: string, healPercent: number) {
+        super(id, name, 9);
         this.#healPercent = healPercent;
     }
 
@@ -13,7 +13,7 @@ abstract class Food extends Item {
         return this.#healPercent;
     }
 
-    eat(character: Character) {
+    eat(character: Character): void {
         character.heal(this.#healPercent);
     }
 }

@@ -1,31 +1,34 @@
 import Item from "./item.js";
 
 class Weapon extends Item {
-    #strengthBonus: number;
+    #strengthBoost: number;
 
     constructor(type: keyof typeof WeaponType) {
         const template = WeaponType[type];
-        super(template.name);
-        this.#strengthBonus = template.strengthBonus;
+        super(template.id, template.name, 1);
+        this.#strengthBoost = template.strengthBoost;
     }
 
-    get strengthBonus(): number {
-        return this.#strengthBonus;
+    get strengthBoost(): number {
+        return this.#strengthBoost;
     }
 }
 
 const WeaponType = {
     DAGGER: {
+        id: 21,
         name: "Dagger",
-        strengthBonus: 3
+        strengthBoost: 3
     },
     SWORD: {
+        id: 22,
         name: "Sword",
-        strengthBonus: 5
+        strengthBoost: 5
     },
     AXE: {
+        id: 23,
         name: "Axe",
-        strengthBonus: 10
+        strengthBoost: 10
     }
 } as const;
 

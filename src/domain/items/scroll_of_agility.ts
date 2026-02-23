@@ -5,7 +5,7 @@ class ScrollOfAgility extends Scroll {
     #agilityBoost: number;
 
     constructor() {
-        super("Scroll of Agility");
+        super(11, "Scroll of Agility");
         this.#agilityBoost = 1;
     }
 

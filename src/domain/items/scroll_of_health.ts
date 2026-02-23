@@ -5,7 +5,7 @@ class ScrollOfHealth extends Scroll {
     #maxHealthBoost: number;
 
     constructor() {
-        super("Scroll of Health");
+        super(12, "Scroll of Health");
         this.#maxHealthBoost = 10;
     }
 
