@@ -1,10 +1,12 @@
+import Weapon from "./items/weapon.js";
+
 class Character {
     #currentHealth: number;
     #maxHealth: number;
     #strength: number;
     #agility: number;
     // #position: Position;
-    // #equippedWeapon: Weapon;
+    #equippedWeapon: Weapon | null;
     // #inventory: Inventory;
 
     constructor() {
@@ -12,6 +14,15 @@ class Character {
         this.#currentHealth = 100;
         this.#strength = 10;
         this.#agility = 10;
+        this.#equippedWeapon = null;
+    }
+
+    get equippedWeapon(): Weapon | null {
+        return this.#equippedWeapon;
+    }
+
+    set equippedWeapon(weapon: Weapon | null) {
+        this.#equippedWeapon = weapon;
     }
 
     takeDamage(amount: number) {
