@@ -1,27 +1,22 @@
-import Character from "../character.js";
+import Entity from "../entity.js";
 
-abstract class Enemy {
-    #type: string;
-    #health: number;
-    #strength: number;
-    #agility: number;
+abstract class Enemy extends Entity {
     #hostility: number;
-    #speed: number;
-    #color: string;
-    #symbol: string;
     
-    constructor(type: string, health: number, strength: number, 
-        agility: number, hostility: number, speed: number,
-        color: string, symbol: string) {
+    constructor(
+        maxHealth: number, strength: number, agility: number, hostility: number, 
+        speed: number, color: string, symbol: string, type: string) {
 
-        this.#type = type
-        this.#health = health;
-        this.#strength = strength;
-        this.#agility = agility;
+        super(maxHealth, strength, agility, speed, color, symbol, type);
         this.#hostility = hostility;
-        this.#speed = speed;
-        this.#color = color;
-        this.#symbol = symbol;
+    }
+
+    get totalStrength(): number {
+        return this.strength;
+    }
+
+    die(): void {
+
     }
     
 }

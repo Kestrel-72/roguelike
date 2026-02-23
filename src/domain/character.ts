@@ -1,22 +1,22 @@
 import Weapon from "./items/weapon.js";
+import Entity from "./entity.js";
+import Inventory from "./inventory.js";
 
-class Character {
-    #currentHealth: number;
-    #maxHealth: number;
-    #strength: number;
-    #agility: number;
-    // #position: Position;
+class Character extends Entity {
     #equippedWeapon: Weapon | null;
-    // #inventory: Inventory;
+    #inventory: Inventory;
 
     constructor() {
-        this.#maxHealth = 100;
-        this.#currentHealth = 100;
-        this.#strength = 10;
-        this.#agility = 10;
+        super(100, 10, 10, 1, "blue", "p", "Player");
         this.#equippedWeapon = null;
+        this.#inventory = new Inventory(this);
     }
 
+    get totalStrength(): number {
+        return this.#equippedWeapon ? 
+        this.strength + this.#equippedWeapon.strengthBoost : this.strength;
+    }
+    
     get equippedWeapon(): Weapon | null {
         return this.#equippedWeapon;
     }
@@ -25,33 +25,20 @@ class Character {
         this.#equippedWeapon = weapon;
     }
 
-    takeDamage(amount: number) {
-        this.#currentHealth -= amount;
-    }
-
-    heal(amount: number) {
-        if (this.#currentHealth + amount > this.#maxHealth) {
-            this.#currentHealth = this.#maxHealth;
-        } else {
-            this.#currentHealth += amount;
-        }
-    }
-
-    increaseMaxHealth(amount: number) {
-        this.#maxHealth += amount;
-        this.#currentHealth += amount;
-    }
-
     decreaseMaxHealth(amount: number) {
-        this.#maxHealth = this.#maxHealth > amount ? this.#maxHealth - amount : 1;
+        this.maxHealth = this.maxHealth > amount ? this.maxHealth - amount : 1;
     }
 
     increaseStrength(amount: number) {
-        this.#strength += amount;
+        this.strength += amount;
     }
 
     increaseAgility(amount: number) {
-        this.#agility += amount;
+        this.agility += amount;
+    }
+
+    die(): void {
+        
     }
 
 }

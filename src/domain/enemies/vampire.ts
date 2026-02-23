@@ -6,15 +6,16 @@ class Vampire extends Enemy {
 
     constructor() {
         super(
-            "Vampire", 
-            stats.health.High, 
-            stats.strength.Medium, 
+            stats.health.High,
+            stats.strength.Medium,
             stats.agility.High,
             stats.hostility.High,
             stats.speed.Normal,
             "red",
-            "v"
+            "v",
+            "Vampire", 
         );
+        
         this.#elusive = true;
     }
     

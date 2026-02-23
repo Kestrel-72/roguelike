@@ -4,14 +4,14 @@ import stats from "./stats.js";
 class SnakeMage extends Enemy {
     constructor() {
         super(
-            "Vampire", 
-            stats.health.Low, 
+            stats.health.Low,
             stats.strength.Low, 
             stats.agility.VeryHigh,
             stats.hostility.High,
             stats.speed.Normal,
             "white",
-            "s"
+            "s",
+            "Snake Mage"
         )
     }
 
