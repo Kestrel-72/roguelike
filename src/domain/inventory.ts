@@ -37,13 +37,23 @@ class ItemSlot {
 
     useItem(character: Character): void {
         if (this.#item instanceof Weapon) {
-            const tmp = character.equippedWeapon;
-            character.equippedWeapon = this.#item;
-            this.#item = tmp;
+            this.#equipWeapon(this.#item, character);
         }
         if (this.#item instanceof Consumable) {
-            this.#item.use(character);
+            this.#consume(this.#item, character);
         }
+    }
+
+    #equipWeapon(weapon: Weapon, character: Character) {
+        const tmp = character.equippedWeapon;
+        character.equippedWeapon = weapon;
+        this.#item = tmp;
+    }
+
+    #consume(consumable: Consumable, character: Character) {
+        consumable.use(character);
+        this.#quantity--;
+        if (this.#quantity == 0) this.#item = null;
     }
 }
 
