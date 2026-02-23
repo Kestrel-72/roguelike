@@ -1,21 +1,30 @@
-import Item from "./item.js";
 import Character from "../character.js";
+import Consumable from "./consumable.js";
 
-abstract class Food extends Item {
+class Food extends Consumable {
     #healPercent: number;
 
-    constructor(id: number, name: string, healPercent: number) {
-        super(id, name, 9);
-        this.#healPercent = healPercent;
+    constructor(type: keyof typeof FoodType) {
+        const template = FoodType[type];
+        super(template.id, template.name);
+        this.#healPercent = template.healPercent;
     }
 
     get healPercent(): number {
         return this.#healPercent;
     }
 
-    eat(character: Character): void {
+    use(character: Character): void {
         character.heal(this.#healPercent);
     }
 }
+
+const FoodType = {
+    SANDWICH: {
+        id: 1,
+        name: "Sandwich",
+        healPercent: 3
+    },
+} as const;
 
 export default Food;
