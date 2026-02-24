@@ -2,6 +2,7 @@ import Character from "./character.js";
 import Weapon from "./items/weapon.js";
 import Item from "./items/item.js";
 import Consumable from "./items/consumable.js";
+import Treasure from "./items/treasure.js";
 
 class Inventory {
     #itemSlots: ItemSlot[];
@@ -9,9 +10,10 @@ class Inventory {
 
     constructor(character: Character) {
         this.#itemSlots = [];
-        for (let i = 0; i < 9; i++) {
+        for (let i = 0; i < 8; i++) {
             this.#itemSlots.push(new ItemSlot(i));
         }
+        this.#itemSlots.push(new TreasureSlot(8));
 
         this.#character = character;
     }
@@ -83,6 +85,13 @@ class ItemSlot {
         consumable.use(character);
         this.#quantity--;
         if (this.#quantity == 0) this.#item = null;
+    }
+}
+
+class TreasureSlot extends ItemSlot {
+    constructor(id: number) {
+        super(id);
+        this.addItemToSlot(new Treasure(), 0);
     }
 }
 
