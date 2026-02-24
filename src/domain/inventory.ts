@@ -4,28 +4,56 @@ import Item from "./items/item.js";
 import Consumable from "./items/consumable.js";
 
 class Inventory {
-    #itemSlots: ItemSlot[] = [];
-    #numSlots: number;
+    #itemSlots: ItemSlot[];
     #character: Character;
 
     constructor(character: Character) {
-        this.#numSlots = 9;
+        this.#itemSlots = [];
+        for (let i = 0; i < 9; i++) {
+            this.#itemSlots.push(new ItemSlot(i));
+        }
+
         this.#character = character;
     }
 
+    get itemSlots() {
+        return this.#itemSlots;
+    }
+
+    addItem(item: Item, quantity: number): void {
+        // if there is a slot with this item, add there
+        const slotWithItem = this.#itemSlots.find(itemSlot => itemSlot.item?.id === item.id);
+        if (slotWithItem) {
+            slotWithItem.addItemToSlot(item, quantity);
+            return;
+        }
+        
+        // if there's no slot with this item, find empty slot and add there
+        const emptySlot = this.#itemSlots.find(itemSlot => itemSlot.item === null);
+        if (emptySlot) {
+            emptySlot.addItemToSlot(item, quantity);
+            return;
+        }
+    }
 }
 
 class ItemSlot {
+    #id: number;
     #item: Item | null;
     #quantity: number;
 
-    constructor() {
+    constructor(id: number) {
+        this.#id = id;
         this.#item = null;
         this.#quantity = 0;
     }
 
+    get item(): Item | null {
+        return this.#item;
+    }
+
     // add items into the slot. If final quantity exceeds stack_size, discard the rest
-    addItem(item: Item, addQuantity: number = 1): void {
+    addItemToSlot(item: Item, addQuantity: number = 1): void {
         if (this.#item === null) {
             this.#item = item;
             this.#quantity = addQuantity;
@@ -33,6 +61,7 @@ class ItemSlot {
             const spaceLeft = this.#item.stack_size - this.#quantity;
             this.#quantity += Math.min(addQuantity, spaceLeft);
         }
+        console.log(`Added ${addQuantity} ${item.name} to slot ${this.#id}`);
     }
 
     useItem(character: Character): void {
