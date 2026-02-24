@@ -25,6 +25,10 @@ class Character extends Entity {
         this.#equippedWeapon = weapon;
     }
 
+    get inventory(): Inventory {
+        return this.#inventory;
+    }
+
     decreaseMaxHealth(amount: number) {
         this.maxHealth = this.maxHealth > amount ? this.maxHealth - amount : 1;
     }
