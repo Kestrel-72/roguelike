@@ -52,6 +52,10 @@ abstract class Entity {
         this.#strength = value;
     }
 
+    get type(): string {
+        return this.#type;
+    }
+
     abstract get totalStrength(): number;
 
     heal(amount: number) {
