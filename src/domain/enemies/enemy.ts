@@ -1,4 +1,6 @@
 import Entity from "../entity.js";
+import Loot from "../items/loot.js";
+import Treasure from "../items/treasure.js";
 
 abstract class Enemy extends Entity {
     #hostility: number;
@@ -16,8 +18,19 @@ abstract class Enemy extends Entity {
     }
 
     die(): void {
-
+        console.log(`${this.type} dies.`);
+        console.log(`${this.type} dropped ${this.#generateTreasure().quantity} treasure!`);
     }
+
+    #generateTreasure(): Loot {
+        const quantity = Math.floor(Math.random() * (this.#hostility + this.strength + this.agility + this.maxHealth));
+        const loot: Loot = {
+            item: new Treasure(),
+            quantity: quantity
+        }
+        
+        return loot;
+    } 
     
 }
 
